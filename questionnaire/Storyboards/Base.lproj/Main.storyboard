@@ -31,6 +31,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Начать опрос">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="qki-8L-0rm" kind="presentation" modalPresentationStyle="fullScreen" id="F5S-hd-S7I"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -81,32 +84,66 @@
             </objects>
             <point key="canvasLocation" x="202.5" y="-358.0985915492958"/>
         </scene>
-        <!--View Controller-->
+        <!--Результат-->
         <scene sceneID="dgR-jh-DAD">
             <objects>
-                <viewController id="Yei-kl-omy" sceneMemberID="viewController">
+                <viewController id="Yei-kl-omy" customClass="ResultViewController" customModule="questionnaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SbS-m2-lkc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kuc-Rz-nwW">
+                                <rect key="frame" x="16" y="207" width="288" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы-🦁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4M-W7-Oq4">
+                                        <rect key="frame" x="74.5" y="0.0" width="139.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы - лев" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du9-v4-s91">
+                                        <rect key="frame" x="105.5" y="70" width="77" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kqz-Oh-fJD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kuc-Rz-nwW" firstAttribute="centerY" secondItem="SbS-m2-lkc" secondAttribute="centerY" constant="-30" id="SNa-wU-LND"/>
+                            <constraint firstItem="kqz-Oh-fJD" firstAttribute="trailing" secondItem="kuc-Rz-nwW" secondAttribute="trailing" constant="16" id="Yjt-DR-jP6"/>
+                            <constraint firstItem="kuc-Rz-nwW" firstAttribute="leading" secondItem="kqz-Oh-fJD" secondAttribute="leading" constant="16" id="bpU-4x-otn"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Результат" id="FfL-j9-9YW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rd0-D2-ocw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1043" y="336"/>
         </scene>
-        <!--View Controller-->
+        <!--Вопрос №-->
         <scene sceneID="rod-Lr-FDK">
             <objects>
-                <viewController id="qZY-G7-8Du" sceneMemberID="viewController">
+                <viewController id="qZY-G7-8Du" customClass="QuestionsViewController" customModule="questionnaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wCf-Gl-1F8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="kFb-JZ-hwE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tpN-ce-iiM"/>
+                    <navigationItem key="navigationItem" title="Вопрос №" id="tpN-ce-iiM">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="MnS-LE-uUI">
+                            <connections>
+                                <segue destination="Yei-kl-omy" kind="show" id="9xR-XQ-e22"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Yei-kl-omy" kind="show" identifier="showResult" id="aNM-cd-oJI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7F-nz-Tr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,8 +154,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qki-8L-0rm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rg0-Nh-3ln">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Rg0-Nh-3ln">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -131,6 +168,9 @@
             <point key="canvasLocation" x="968" y="-358"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aNM-cd-oJI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
